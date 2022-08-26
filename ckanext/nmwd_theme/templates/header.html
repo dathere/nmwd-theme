@@ -29,6 +29,12 @@
               <i class="fa fa-line-chart"></i>
               <a href="https://newmexicowaterdata.org/contact/" aria-label="Contact Icon">&nbsp; Contact Us</a>
             </li>
+            <li style="margin-left:40px;">
+              {% if not c.userobj %}
+                <i class="fa fa-sign-in"></i>
+                {% link_for _('Log in'), named_route='user.login' %}
+              {% endif %}
+            </li>
           </ul>
       </div>
       </div>

@@ -265,7 +265,8 @@ a.browse-group {
   
   .nav {
   float: right;
-  text-align: right;
+  text-align: left;
+  padding-left: 2em;
   }
   
   nav .right-content {

@@ -308,7 +308,11 @@
 .topic-icon {
   display: block;
   margin-bottom: 10px;
+}
 
+.topic-icon:hover {
+  background-color: #03789B;
+  color: white;
 }
 
 .topic-title {
