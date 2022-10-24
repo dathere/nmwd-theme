@@ -121,9 +121,9 @@ ul {
 html > body > footer > div > div > div > ul > li > a{
     color:#2f76a0;
 }
-/* html.js body div div#content.container div.row.wrapper div.primary.col-sm-9.col-xs-12 section.module div.module-content form#resource-edit.dataset-form.dataset-resource-form div.image-upload div.form-group.control-full div.controls input#field-image-upload.form-control{
+html.js body div div#content.container div.row.wrapper div.primary.col-sm-9.col-xs-12 section.module div.module-content form#resource-edit.dataset-form.dataset-resource-form div.image-upload div.form-group.control-full div.controls input#field-image-upload.form-control{
     width: 100% !important;
-} */
+}
 /* #field-image-upload{
     width: 100%;
 } */
@@ -193,8 +193,9 @@ html > body > footer > div > div > div > ul > li > a{
   border-top: 1px dotted #ddd;
 }
 .module .read-more {
-  margin-left: 10px;
-  padding-left: 10px;
+  margin-left: 12px;
+  padding-left: 12px;
+  display: inline-block;
   font-weight: bold;
   color: #000;
 }
