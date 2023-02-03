@@ -59,7 +59,7 @@
         },
         {
             "field_name": "contact_name",
-            "required": true,
+            "required": false,
             "label": {
                 "en": "Contact Name"
             },
@@ -71,7 +71,7 @@
             "label": {
                 "en": "Contact Email"
             },
-            "required": true,
+            "required": false,
             "form_placeholder": "Primary contact email"
         },
         {
@@ -134,7 +134,7 @@
             "label": {
                 "en": "Publish Method"
             },
-            "required": true,
+            "required": false,
             "preset": "select",
             "choices": [
                 {
@@ -168,7 +168,7 @@
             "label": {
                 "en": "Publish Frequency"
             },
-            "required": true,
+            "required": false,
             "preset": "select",
             "choices": [{
                     "label": {
