@@ -6,9 +6,9 @@
     {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('SDWIS'), value=data.url, error=errors.url, classes=['control-medium']) }}
   {% endblock %} -->
 
-  {% block package_metadata_fields_version %}
+  <!-- {% block package_metadata_fields_version %}
     {{ form.input('version', label=_('Version'), id='field-version', placeholder=_('1.0'), value=data.version, error=errors.version, classes=['control-medium']) }}
-  {% endblock %}
+  {% endblock %} -->
 
   <!-- {% block package_metadata_author %}
     {{ form.input('author', label=_('Author'), id='field-author', placeholder=_('Joe Bloggs'), value=data.author, error=errors.author, classes=['control-medium']) }}
@@ -21,12 +21,6 @@
 
     {{ form.input('maintainer_email', label=_('Maintainer Email'), id='field-maintainer-email', placeholder=_('joe@example.com'), value=data.maintainer_email, error=errors.maintainer_email, classes=['control-medium']) }}
   {% endblock %} -->
-
-  {% block package_metadata_fields_custom %}
-    {% block custom_fields %}
-      {% snippet 'snippets/custom_form_fields.html', extras=data.extras, errors=errors, limit=3 %}
-    {% endblock %}
-  {% endblock %}
 
   {% block dataset_fields %}
   {% endblock %}

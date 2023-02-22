@@ -35,11 +35,14 @@ def popular_datasets():
 
     pkgs = []
     for dataset_id in ds:
-        package = toolkit.get_action('package_show')(
-            data_dict={'id': dataset_id})
-        modified = datetime.strptime(
-            package['metadata_modified'].split('T')[0], '%Y-%m-%d')
-        package['uploaded'] = modified.strftime('%d %b %Y')
-        pkgs.append(package)
+        try:
+            package = toolkit.get_action('package_show')(
+                data_dict={'id': dataset_id})
+            modified = datetime.strptime(
+                package['metadata_modified'].split('T')[0], '%Y-%m-%d')
+            package['uploaded'] = modified.strftime('%d %b %Y')
+            pkgs.append(package)
+        except:
+            pass
     return pkgs
 
