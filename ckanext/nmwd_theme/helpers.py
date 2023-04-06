@@ -31,7 +31,7 @@ def datasets_count():
 
 def popular_datasets():
     '''Return the most popular datasets'''
-    ds = ['public-water-supply-areas', 'water-use', 'collaborative-groundwater-monitoring-network']
+    ds = ['water-use', 'collaborative-groundwater-monitoring-network']
 
     pkgs = []
     for dataset_id in ds:
