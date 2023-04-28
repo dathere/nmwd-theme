@@ -15,8 +15,8 @@
                 <span>{{group['display_name']}}</span>
               {% endif %}
             </div>
-            <div class="dt-title">{{dataset.title}}</div>
-            <div class="dt-description">{{dataset.notes}}</div>
+            <div class="dt-title">{{dataset.title | truncate(40)}}</div>
+            <div class="dt-description">{{dataset.notes | truncate(250)}}</div>
             <div class="dt-date pull-right">
               <!-- <img src="/images/download-icon.svg">&nbsp;435 &nbsp; &nbsp; &nbsp; -->
               <img src="/images/dates-icon.svg">&nbsp;{{dataset.uploaded}}
