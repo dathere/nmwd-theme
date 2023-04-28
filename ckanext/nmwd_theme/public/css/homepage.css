@@ -250,9 +250,14 @@
   text-align:start;
 }
 
-#tweet-box a {
-  color: #fff;
+#tweet-box a:link, #tweet-box a:visited {
+  color: #8ad8f7;
+  text-decoration: underline;
   cursor: pointer;
+}
+
+#tweet-box a:hover, #tweet-box a:active {
+  color: #57bde6;
   text-decoration: none;
 }
 .prev-next{
@@ -340,4 +345,3 @@
     END OF TOPICS.CSS
    ==========================================
 */
-
