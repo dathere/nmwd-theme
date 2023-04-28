@@ -11,7 +11,9 @@
           <div onclick="location.href='/dataset/{{dataset.name}}'" class="popular-dataset-box">
             <div class="dt-group-icon" style = "background: {{colors[loop.index-1]}}">
               {% set group = dataset.groups|first %}
-              <span>{{group['display_name']}}</span>
+              {% if group %}
+                <span>{{group['display_name']}}</span>
+              {% endif %}
             </div>
             <div class="dt-title">{{dataset.title}}</div>
             <div class="dt-description">{{dataset.notes}}</div>
