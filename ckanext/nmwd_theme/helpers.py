@@ -64,5 +64,5 @@ def get_tweets():
     for tweet in tweets["pageProps"]["timeline"]["entries"][:10]:
         five_latest_tweets.append(tweet["content"]["tweet"]["full_text"])
 
-    return five_latest_tweets
+    return json.dumps(five_latest_tweets)
     
