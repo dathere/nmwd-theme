@@ -35,7 +35,7 @@
         <div>
           <div style="margin-bottom:30px;"><img src="/images/quotes.svg" ></img></div>
           {% set tweets = h.nmwd_theme_get_tweets() %}
-          <div id="tweets-hidden" style="display:none;">{{tweets|tojson|safe}}</div>
+          <div id="tweets-hidden" style="display:none;">{{tweets|safe}}</div>
           <div id="tweet-box"> 
             <div id="tweet">
               {{ tweets[0]}} 
