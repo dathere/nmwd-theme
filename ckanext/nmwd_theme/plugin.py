@@ -27,7 +27,8 @@ class Nmwd_ThemePlugin(plugins.SingletonPlugin):
             'nmwd_theme_popular_datasets': popular_datasets, \
             'nmwd_theme_topics_count': topics_count, \
             'nmwd_theme_sources_count': sources_count, \
-            'nmwd_theme_datasets_count': datasets_count
+            'nmwd_theme_datasets_count': datasets_count, \
+            'nmwd_theme_get_tweets': get_tweets
             }
 
 

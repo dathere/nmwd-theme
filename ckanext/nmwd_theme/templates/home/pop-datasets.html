@@ -1,4 +1,3 @@
-
 <div class="container-fluid pop-datasets"style="margin-top:40px;">
  
     <div class="container">
@@ -12,10 +11,12 @@
           <div onclick="location.href='/dataset/{{dataset.name}}'" class="popular-dataset-box">
             <div class="dt-group-icon" style = "background: {{colors[loop.index-1]}}">
               {% set group = dataset.groups|first %}
-              <span>{{group['display_name']}}</span>
+              {% if group %}
+                <span>{{group['display_name']}}</span>
+              {% endif %}
             </div>
-            <div class="dt-title">{{dataset.title}}</div>
-            <div class="dt-description">{{dataset.notes}}</div>
+            <div class="dt-title">{{dataset.title | truncate(40)}}</div>
+            <div class="dt-description">{{dataset.notes | truncate(250)}}</div>
             <div class="dt-date pull-right">
               <!-- <img src="/images/download-icon.svg">&nbsp;435 &nbsp; &nbsp; &nbsp; -->
               <img src="/images/dates-icon.svg">&nbsp;{{dataset.uploaded}}
@@ -35,58 +36,83 @@
       <div class="col-md-7 col-sm-12 col-xs-12">
         <div>
           <div style="margin-bottom:30px;"><img src="/images/quotes.svg" ></img></div>
+          {% set tweets = h.nmwd_theme_get_tweets() %}
+          <div id="tweets-hidden" style="display:none;">{{tweets|safe}}</div>
           <div id="tweet-box"> 
-            <div id="tweet">This report highlights the need to prioritize water, increase access to high-quality water data, 
-            assessment of current water supply & demand and water resource risk, the role of climate change and more. 
+            <div id="tweet">
+              {{ tweets[0]}} 
             </div>
             <!-- <div id="hashtags" style="margin-top:10px; margin-bottom:30px;">#newmexico #newmexicowaterdata #water #waterdata #groundwater #waterpolicy</div> -->
-        </div>
-        <div class="prev-next">
-          <a id="previousButton" class="pull-left"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;PREVIOUS</a>
-          <a id="nextButton"style="margin-left:20%;">NEXT&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
-        </div>
+          </div>
+          <div class="prev-next">
+            <a id="previousButton" class="pull-left" href="#"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;PREVIOUS</a>
+            <a id="nextButton" style="margin-left:20%;" href="#">NEXT&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+          </div>
 
+        </div>
       </div>
     </div>
-</div>
-</div>
+  </div>
 </div>
 
-<script src="/js/twitterFetcher_min.js"></script>
 <script>
-  var configProfile = {
-    "profile": {"screenName": 'NMWaterData'},
-    "maxTweets": 5,
-    "dataOnly": true,
-    "customCallback": showTweets
+  // Get the tweets from the hidden div
+const tweets = JSON.parse(document.getElementById("tweets-hidden").textContent);
 
+// Initialize the tweet index
+let tweetIndex = 0;
+
+// Function to format tweet text
+function formatTweetText(text) {
+  const links = text.match(/(https?:\/\/[^\s]+)/g);
+  const hashtags = text.match(/(\#\w+)/g);
+  let formattedText = text;
+  if (links) {
+    links.forEach((link) => {
+      formattedText = formattedText.replace(
+        link,
+        `<a href="${link}" class="tweet-link" target="_blank">${link}</a>`
+      );
+    });
   }
-  twitterFetcher.fetch(configProfile)
-
-  function showTweets(tweets){
-    tweetsLength = tweets.length;
-    var nextCount = 0;
-    var tweetDiv = document.getElementById('tweet');
-    var previous = document.getElementById('previousButton');
-    var next = document.getElementById('nextButton');
-    tweetDiv.innerHTML = tweets[4].tweet;
-
-    next.onclick = function (e) {
-      if (nextCount == tweetsLength - 1) {
-        nextCount = 0
-        return tweetDiv.innerHTML = tweets[nextCount].tweet
-      }
-      ++nextCount;
-      tweetDiv.innerHTML = tweets[nextCount].tweet;
-    };
-
-    previous.onclick = function (e) {
-      console.log(nextCount)
-      if (nextCount == 0) return tweetDiv.innerHTML = tweets[tweetsLength - 2].tweet
-      console.log(tweetsLength - nextCount)
-      tweetDiv.innerHTML = tweets[tweetsLength - nextCount].tweet
-    }
+  if (hashtags) {
+    hashtags.forEach((hashtag) => {
+      formattedText = formattedText.replace(
+        hashtag,
+        `<a style="text-decoration: underline; hover-underline: none;" href="https://twitter.com/hashtag/${hashtag.replace(/#(\w+)/g, "$1")}" class="tweet-link">${hashtag}</a>`
+      );
+    });
   }
+  return formattedText;
+}
 
+// Function to update the tweet box
+function updateTweetBox() {
+  const tweetBox = document.getElementById("tweet");
+  tweetBox.innerHTML = formatTweetText(tweets[tweetIndex]);
+}
+
+// Initialize the tweet box
+updateTweetBox();
+
+// Add click event listener to the previous button
+const previousButton = document.getElementById("previousButton");
+previousButton.addEventListener("click", () => {
+  event.preventDefault();
+  if (tweetIndex > 0) {
+    tweetIndex--;
+    updateTweetBox();
+  }
+});
+
+// Add click event listener to the next button
+const nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", () => {
+  event.preventDefault();
+  if (tweetIndex < tweets.length - 1) {
+    tweetIndex++;
+    updateTweetBox();
+  }
+});
 </script>
 
