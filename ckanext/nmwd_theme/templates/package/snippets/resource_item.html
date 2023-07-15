@@ -1,5 +1,5 @@
-{% set url_action = 'resource_edit' if url_is_edit and can_edit else 'resource_read' %}
-{% set url = h.url_for(controller='package', action=url_action, id=pkg.name, resource_id=res.id) %}
+{% set url_action = pkg.type ~ ('_resource.edit' if url_is_edit and can_edit else '_resource.read') %}
+{% set url = h.url_for(url_action, id=pkg.id if is_activity_archive else pkg.name, resource_id=res.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
 
 <li class="resource-item" data-id="{{ res.id }}">
   {% block resource_item_title %}
@@ -48,11 +48,7 @@
   {% endblock %}
 
 
-
-
-
-
-  <!-- <div class="dropdown btn-group">
+  {# <div class="dropdown btn-group">
     <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       <i class="fa fa-share"></i>
       {{ _('Explore') }}
@@ -94,7 +90,8 @@
       {% endif %}
       {% endblock %}
     </ul>
-  </div> -->
+  </div> #}
+  
   {% endif %}
   {% endblock %}
 </li>
