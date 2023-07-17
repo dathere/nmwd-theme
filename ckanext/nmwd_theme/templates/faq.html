@@ -5,7 +5,7 @@
 
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('FAQ'), controller='ckanext.wdi_theme.controller:WDIController', action='faq' %}</li>
+  <li class="active">{{ h.nav_link(_('FAQ'), named_route='nmwd.faq') }}</li>
 {% endblock %}
 
 {% block primary %}

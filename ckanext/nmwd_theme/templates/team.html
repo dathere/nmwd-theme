@@ -2,10 +2,8 @@
 
 {% extends "page.html" %}
 
-
-
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Team'), controller='ckanext.wdi_theme.controller:WDIController', action='team' %}</li>
+  <li class="active">{{ h.nav_link(_('Team'), named_route='nmwd.team') }}</li>
 {% endblock %}
 
 {% block primary %}

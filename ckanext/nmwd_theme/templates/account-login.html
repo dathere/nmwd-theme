@@ -20,7 +20,6 @@
     </li>
     <li>
 
-
       {% set new_activities = h.new_activities() %}
     <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
       {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
