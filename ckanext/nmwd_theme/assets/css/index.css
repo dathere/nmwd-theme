@@ -4,9 +4,12 @@
   margin: 0px;
   font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  background: #eee url(../../../base/images/bg.png);
+  background-color: #fff;
 }
 ul {
     margin: 0;

@@ -1,0 +1,12 @@
+nmwd_theme-style:
+  output: nmwd_theme/%(version)s_custom.css
+  contents:
+    - css/homepage.css
+    - css/index.css
+nmwd_theme-js:
+  output: nmwd_theme/%(version)s_custom.js
+  contents:
+    - js/twitterFetcher_min.js
+  extra:
+    preload:
+      - base/main
