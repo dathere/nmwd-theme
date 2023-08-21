@@ -3,10 +3,11 @@ nmwd_theme-style:
   contents:
     - css/homepage.css
     - css/index.css
-nmwd_theme-js:
-  output: nmwd_theme/%(version)s_custom.js
-  contents:
-    - js/twitterFetcher_min.js
-  extra:
-    preload:
-      - base/main
+
+# nmwd_theme-js:
+#   output: nmwd_theme/%(version)s_custom.js
+#   contents:
+#     - js/twitterFetcher_min.js
+#   extra:
+#     preload:
+#       - base/main
