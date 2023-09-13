@@ -24,7 +24,9 @@ class Nmwd_ThemePlugin(plugins.SingletonPlugin):
             'nmwd_theme_topics_count': helpers.topics_count,
             'nmwd_theme_sources_count': helpers.sources_count,
             'nmwd_theme_datasets_count': helpers.datasets_count,
-            'nmwd_theme_get_tweets': helpers.get_tweets
+            'nmwd_theme_get_tweets': helpers.get_tweets,
+            'nwmd_theme_showcases': helpers.showcases,
+            'get_value_from_showcase_extras': helpers.get_value_from_showcase_extras,
         }
 
     # IBlueprint

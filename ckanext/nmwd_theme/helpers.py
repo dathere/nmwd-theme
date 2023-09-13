@@ -98,3 +98,14 @@ def validate_contact_form(data_dict):
                 error_summary['recaptcha'] = 'Bad Captcha. Please try again.'
 
     return data_dict, errors, error_summary
+
+def showcases():
+    return tk.get_action("ckanext_showcase_list")()
+
+
+def get_value_from_showcase_extras(extras, key):
+    value = ''
+    for item in extras:
+        if item.get('key') == key:
+            value = item.get('value', '')
+    return value
